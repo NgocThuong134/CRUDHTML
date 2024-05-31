@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Details</title>
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <link rel="icon" href="../assets/img/icons/R.png">
+</head>
+<body>
+  <div class="details-container">
+    <h1 class="centered-title">Restaurant Details</h1>
+
+    <h2>Name: <%= restaurant.name %></h2>
+    <p>Borough: <%= restaurant.borough %></p>
+    <p>Cuisine Type: <%= restaurant.cuisine %></p>
+
+    <div class="address-container">
+      <h3>Address:</h3>
+      <p>Street: <%= restaurant.address.street %></p>
+      <p>Zipcode: <%= restaurant.address.zipcode %></p>
+      <p>Building Number: <%= restaurant.address.building %></p>
+    </div>
+
+    <div class="coordinates-container">
+      <h3>Coordinates:</h3>
+      <p>Latitude: <%= restaurant.address.coord[1] %></p>
+      <p>Longitude: <%= restaurant.address.coord[0] %></p>
+    </div>
+
+    <div class="grades-container">
+        <h3>Grades:</h3>
+        <% restaurant.grades.forEach(function(grade) { %>
+          <% let formattedDate = grade.date.toISOString().slice(0, 10); %>
+          <p>Date: <%= formattedDate %></p>
+          <p>Grade: <%= grade.grade %></p>
+          <p>Score: <%= grade.score %></p>
+          <hr>
+        <% }) %>
+      </div>
+  </div>
+
+  <div class="centered-button">
+    <a href="/restaurants" class="back-button">Back</a>
+  </div>
+</body>
+</html>
